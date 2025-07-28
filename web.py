@@ -18,7 +18,7 @@ class WebArgs(TypedDict, total=False):
     cpuTarget: Input[float]
 
 class Web(pulumi.ComponentResource):
-    def __init__(self, name: str, args: WebArgs, opts:Optional[pulumi.ResourceOptions] = None):
+    def __init__(self, name: str, args: WebArgs, opts: Optional[pulumi.ResourceOptions] = None):
         super().__init__("components:index:Web", name, args, opts)
 
         # fetch latest amazon linux ami
@@ -65,13 +65,18 @@ class Web(pulumi.ComponentResource):
                 "name": ssm_instance_profile.name,
             },
             opts = pulumi.ResourceOptions(parent=self))
+        # Determine autoscaling configuration with sane defaults if values are
+        # not provided via the component arguments.
+        desired_capacity = args.get("desiredCapacity", 1)
+        min_size = args.get("minSize", desired_capacity)
+        max_size = args.get("maxSize", max(min_size, desired_capacity))
 
         # autoscaling group for web instances
         web_asg = aws.autoscaling.Group(f"{name}-web_asg",
             name_prefix=f"{args["projectName"]}-asg",
-            desired_capacity=args["desiredCapacity"],
-            min_size=args["minSize"],
-            max_size=args["maxSize"],
+            desired_capacity=desired_capacity,
+            min_size=min_size,
+            max_size=max_size,
             vpc_zone_identifiers=[
                 args["privSubWeb1"],
                 args["privSubWeb2"],
@@ -89,6 +94,7 @@ class Web(pulumi.ComponentResource):
             opts = pulumi.ResourceOptions(parent=self))
 
         # tracking policy based on average CPU utilization
+        cpu_target = args.get("cpuTarget", 50)
         cpu_target_policy = aws.autoscaling.Policy(f"{name}-cpu_target",
             name=f"{args["projectName"]}-cpu-policy",
             autoscaling_group_name=web_asg.name,
@@ -97,7 +103,7 @@ class Web(pulumi.ComponentResource):
                 "predefined_metric_specification": {
                     "predefined_metric_type": "ASGAverageCPUUtilization",
                 },
-                "target_value": args["cpuTarget"],
+                "target_value": cpu_target,
             },
             opts = pulumi.ResourceOptions(parent=self))
 

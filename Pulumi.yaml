@@ -1,11 +1,5 @@
-name: AWS-Pulumi
-description: Zavrsni rad
-runtime:
-  name: python
-  options:
-    toolchain: pip
-    virtualenv: venv
+name: global
+runtime: python
 config:
-  pulumi:tags:
-    value:
-      pulumi:template: aws-python
+  aws:region:
+    value: eu-central-1

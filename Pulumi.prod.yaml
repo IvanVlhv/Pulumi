@@ -1,16 +1,28 @@
 config:
   aws:region: eu-central-1
-  projectName: ZavrsniRad
-  awsRegion: eu-central-1
-  vpcCidr: 10.0.0.0/16
-  pubSubNat1: 10.10.1.0/24
-  pubSubNat2: 10.10.11.0/24
-  privSubWeb1: 10.10.2.0/24
-  privSubWeb2: 10.10.12.0/24
-  privSubDb1: 10.10.3.0/24
-  privSubDb2: 10.10.13.0/24
-  dbUsername: your_db_user
-  dbPassword: your_db_password
-  webInstanceType: t3.micro
-  keyName:
-    
+  global:awsRegion:
+    value: eu-central-1
+  global:dbPassword:
+    secure: 
+  global:dbUsername:
+    value: 
+  global:keyName:
+    value: nema
+  global:privSubDb1:
+    value: 10.10.3.0/24
+  global:privSubDb2:
+    value: 10.10.13.0/24
+  global:privSubWeb1:
+    value: 10.10.2.0/24
+  global:privSubWeb2:
+    value: 10.10.12.0/24
+  global:projectName:
+    name: ZavrsniRad
+  global:pubSubNat1:
+    value: 10.10.1.0/24
+  global:pubSubNat2:
+    value: 10.10.11.0/24
+  global:vpcCidr:
+    value: 10.0.0.0/16
+  global:webInstanceType:
+    value: t3.micro

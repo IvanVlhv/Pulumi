@@ -79,6 +79,7 @@ web = Web(
         "keyName": key_name,
         "userData": base64.b64encode(open(user_data_file, "rb").read()).decode(),
     },
+    pulumi.ResourceOptions(depends_on=[nat])
 )
 db = Db(
     "db",
@@ -92,4 +93,3 @@ db = Db(
     },
 )
 pulumi.export("albDns", alb.albDns)
-

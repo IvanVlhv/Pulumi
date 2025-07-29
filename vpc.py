@@ -134,7 +134,7 @@ class Vpc(pulumi.ComponentResource):
 
         self.projectName = args["projectName"]
         self.awsRegion = args["awsRegion"]
-        self.igwId = internet_gateway.id
+        self.internetGateway = internet_gateway
         self.vpcId = vpc.id
         self.pubSubNat1Id = pub_sub_nat1_subnet.id
         self.pubSubNat2Id = pub_sub_nat2_subnet.id

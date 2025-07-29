@@ -4,7 +4,7 @@ from typing import Optional, Dict, TypedDict, Any
 import pulumi_aws as aws
 
 class NatArgs(TypedDict, total=False):
-    igwId: Input[Any]
+    igw: pulumi.Resource
     vpcId: Input[Any]
     pubSubNat1: Input[Any]
     pubSubNat2: Input[Any]

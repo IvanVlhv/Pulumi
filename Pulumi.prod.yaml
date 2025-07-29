@@ -15,6 +15,6 @@ config:
   privSubWeb2: 10.10.12.0/24
   pubSubNat1: 10.10.1.0/24
   pubSubNat2: 10.10.11.0/24
-  vpcCidr: 10.0.0.0/16
+  vpcCidr: 10.10.0.0/16
   global:webInstanceType:
     value: t3.micro

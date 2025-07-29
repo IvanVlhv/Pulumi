@@ -17,7 +17,7 @@ config:
   global:privSubWeb2:
     value: 10.10.12.0/24
   global:projectName:
-    name: ZavrsniRad
+    value: ZavrsniRad
   global:pubSubNat1:
     value: 10.10.1.0/24
   global:pubSubNat2:

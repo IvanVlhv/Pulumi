@@ -25,6 +25,10 @@ db_username = config.require("dbUsername")
 db_password = config.require_secret("dbPassword")
 web_instance_type = config.require("webInstanceType")
 key_name = config.require("keyName")
+web_min_size = config.get_float("webMinSize") or 2
+web_max_size = config.get_float("webMaxSize") or 4
+web_desired_capacity = config.get_float("webDesiredCapacity") or web_min_size
+web_cpu_target = config.get_float("webCpuTarget") or 50
 
 vpc = Vpc(
     "vpc",
@@ -78,6 +82,10 @@ web = Web(
         "instanceType": web_instance_type,
         "keyName": key_name,
         "userData": base64.b64encode(open(user_data_file, "rb").read()).decode(),
+        "minSize": web_min_size,
+        "maxSize": web_max_size,
+        "desiredCapacity": web_desired_capacity,
+        "cpuTarget": web_cpu_target,
     },
     pulumi.ResourceOptions(depends_on=[nat])
 )

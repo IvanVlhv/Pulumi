@@ -67,9 +67,9 @@ class Web(pulumi.ComponentResource):
             opts = pulumi.ResourceOptions(parent=self))
         # Determine autoscaling configuration with sane defaults if values are
         # not provided via the component arguments.
-        desired_capacity = args.get("desiredCapacity", 1)
+        desired_capacity = args.get("desiredCapacity", 2)
         min_size = args.get("minSize", desired_capacity)
-        max_size = args.get("maxSize", max(min_size, desired_capacity))
+        max_size = args.get("maxSize", max(desired_capacity * 2, min_size))
 
         # autoscaling group for web instances
         web_asg = aws.autoscaling.Group(f"{name}-web_asg",

@@ -23,7 +23,7 @@ priv_sub_db1 = config.require("privSubDb1")
 priv_sub_db2 = config.require("privSubDb2")
 db_username = config.require("dbUsername")
 db_password = config.require_secret("dbPassword")
-wweb_instance_type = config.require("webInstanceType")
+web_instance_type = config.require("webInstanceType")
 key_name = config.require("keyName")
 
 vpc = Vpc(

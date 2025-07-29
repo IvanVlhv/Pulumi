@@ -1,6 +1,5 @@
 config:
-  global:projectName:
-    value: ZavrsniRad  
+  projectName: ZavrsniRad  
   aws:region: eu-central-1
   global:awsRegion:
     value: eu-central-1

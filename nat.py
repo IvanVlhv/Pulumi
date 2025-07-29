@@ -97,4 +97,17 @@ class Nat(pulumi.ComponentResource):
             route_table_id=private_rt2.id,
             opts = pulumi.ResourceOptions(parent=self))
 
-        self.register_outputs()
+        self.eipNat1Id = eip_nat1.id
+        self.eipNat2Id = eip_nat2.id
+        self.nat1Id = nat1.id
+        self.nat2Id = nat2.id
+        self.privateRt1Id = private_rt1.id
+        self.privateRt2Id = private_rt2.id
+        self.register_outputs({
+            "eipNat1Id": eip_nat1.id,
+            "eipNat2Id": eip_nat2.id,
+            "nat1Id": nat1.id,
+            "nat2Id": nat2.id,
+            "privateRt1Id": private_rt1.id,
+            "privateRt2Id": private_rt2.id,
+        })

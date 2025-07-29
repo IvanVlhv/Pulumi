@@ -1,4 +1,6 @@
 config:
+  global:projectName:
+    value: ZavrsniRad  
   aws:region: eu-central-1
   global:awsRegion:
     value: eu-central-1
@@ -8,21 +10,12 @@ config:
     value: 
   global:keyName:
     value: nema
-  global:privSubDb1:
-    value: 10.10.3.0/24
-  global:privSubDb2:
-    value: 10.10.13.0/24
-  global:privSubWeb1:
-    value: 10.10.2.0/24
-  global:privSubWeb2:
-    value: 10.10.12.0/24
-  global:projectName:
-    value: ZavrsniRad
-  global:pubSubNat1:
-    value: 10.10.1.0/24
-  global:pubSubNat2:
-    value: 10.10.11.0/24
-  global:vpcCidr:
-    value: 10.0.0.0/16
+  privSubDb1: 10.10.3.0/24
+  privSubDb2: 10.10.13.0/24
+  privSubWeb1: 10.10.2.0/24
+  privSubWeb2: 10.10.12.0/24
+  pubSubNat1: 10.10.1.0/24
+  pubSubNat2: 10.10.11.0/24
+  vpcCidr: 10.0.0.0/16
   global:webInstanceType:
     value: t3.micro

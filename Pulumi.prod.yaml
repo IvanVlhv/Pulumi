@@ -1,20 +1,21 @@
 config:
-  projectName: ZavrsniRad  
   aws:region: eu-central-1
-  global:awsRegion:
-    value: eu-central-1
+  global:awsRegion: eu-central-1
   global:dbPassword:
-    secure: 
-  global:dbUsername:
-    value: 
-  global:keyName:
-    value: nema
-  privSubDb1: 10.10.3.0/24
-  privSubDb2: 10.10.13.0/24
-  privSubWeb1: 10.10.2.0/24
-  privSubWeb2: 10.10.12.0/24
-  pubSubNat1: 10.10.1.0/24
-  pubSubNat2: 10.10.11.0/24
-  vpcCidr: 10.10.0.0/16
-  global:webInstanceType:
-    value: t3.micro
+    secure:
+  global:keyName: ""
+  global:webInstanceType: t3.micro
+  global:dbUsername: 
+  global:privSubDb1: 10.10.3.0/24
+  global:privSubDb2: 10.10.13.0/24
+  global:privSubWeb1: 10.10.2.0/24
+  global:privSubWeb2: 10.10.12.0/24
+  global:projectName: ZavrsniRad
+  global:pubSubNat1: 10.10.1.0/24
+  global:pubSubNat2: 10.10.11.0/24
+  global:vpcCidr: 10.10.0.0/16
+  # Autoscaling configuration for the web component
+  global:webMinSize: 2
+  global:webMaxSize: 4
+  global:webDesiredCapacity: 2
+  global:webCpuTarget: 50

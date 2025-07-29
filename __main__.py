@@ -7,7 +7,7 @@ from nat import Nat
 from sec_group import SecGroup
 from vpc import Vpc
 from web import Web
-import pulumi_std as std
+import base64
 
 module_path = os.path.dirname(os.path.abspath(__file__))
 
@@ -77,7 +77,7 @@ web = Web(
         "targetGroupArn": alb.targetGroupArn,
         "instanceType": web_instance_type,
         "keyName": key_name,
-        "userData": std.index.filebase64(input=user_data_file)["result"],
+        "userData": base64.b64encode(open(user_data_file, "rb").read()).decode(),
     },
 )
 db = Db(

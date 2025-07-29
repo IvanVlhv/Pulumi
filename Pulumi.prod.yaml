@@ -14,7 +14,6 @@ config:
   global:pubSubNat1: 10.10.1.0/24
   global:pubSubNat2: 10.10.11.0/24
   global:vpcCidr: 10.10.0.0/16
-  # Autoscaling configuration for the web component
   global:webMinSize: 2
   global:webMaxSize: 4
   global:webDesiredCapacity: 2

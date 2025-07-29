@@ -22,7 +22,7 @@ priv_sub_web2 = config.require_object("privSubWeb2")
 priv_sub_db1 = config.require_object("privSubDb1")
 priv_sub_db2 = config.require_object("privSubDb2")
 db_username = config.require_object("dbUsername")
-db_password = config.require_object("dbPassword")
+db_password = config.require_secret("dbPassword")
 web_instance_type = config.require_object("webInstanceType")
 key_name = config.require_object("keyName")
 

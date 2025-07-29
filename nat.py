@@ -36,8 +36,7 @@ class Nat(pulumi.ComponentResource):
             tags={
                 "Name": "nat-1",
             },
-            opts = pulumi.ResourceOptions(parent=self,
-                depends_on=[args["igwId"]]))
+            opts=pulumi.ResourceOptions(parent=self, depends_on=[args["igw"]]))
 
         # nat gateway in public subnet 2
         nat2 = aws.ec2.NatGateway(f"{name}-nat_2",
@@ -46,8 +45,7 @@ class Nat(pulumi.ComponentResource):
             tags={
                 "Name": "nat-2",
             },
-            opts = pulumi.ResourceOptions(parent=self,
-                depends_on=[args["igwId"]]))
+            opts=pulumi.ResourceOptions(parent=self, depends_on=[args["igw"]]))
 
         # private route table 1
         private_rt1 = aws.ec2.RouteTable(f"{name}-private_rt_1",

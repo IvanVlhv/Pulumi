@@ -30,12 +30,14 @@ class Vpc(pulumi.ComponentResource):
             opts = pulumi.ResourceOptions(parent=self))
 
         #internet gateway 
-        internet_gateway = aws.ec2.InternetGateway(f"{name}-internet_gateway",
+        internet_gateway = aws.ec2.InternetGateway(
+            f"{name}-internet_gateway",
             vpc_id=vpc.id,
             tags={
                 "Name": f"{args["projectName"]}-igw",
             },
-            opts = pulumi.ResourceOptions(parent=self))
+            opts=pulumi.ResourceOptions(parent=self),
+        )
 
         #available zones
         available_zones = aws.get_availability_zones_output()

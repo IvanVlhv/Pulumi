@@ -43,7 +43,7 @@ vpc = Vpc(
 nat = Nat(
     "nat",
     {
-        "igwId": vpc.igwId,
+        "igw": vpc.internetGateway,
         "vpcId": vpc.vpcId,
         "pubSubNat1": vpc.pubSubNat1Id,
         "pubSubNat2": vpc.pubSubNat2Id,
